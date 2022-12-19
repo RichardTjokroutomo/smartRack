@@ -1,0 +1,64 @@
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="customcss/home.css">
+    </head>
+
+    <body>
+        <h1>hello!</h1>
+        <%if(session){%>
+            <p><%=session%></p>
+        <%}%>
+
+        <button id="refresh">start now!</button>
+        <div id="data">
+            
+        </div>
+
+        <a href="/login">login here</href>
+        <a href="/logout">logout</a>
+
+
+        <script src="/js/bootstrap.js"></script>
+        <script src="/customjs/home.js" defer></script>
+    </body>
+</html>
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="customcss/home.css">
+        <link rel = "stylesheet" href = "/customcss/homeTwo.css">
+        <title>Home</title>
+    </head>
+
+    <body>
+        <div>
+            <h1 class = "hello">Hello!</h1>
+            <%if(session){%>
+                <p><%=session%></p>
+            <%}%>
+
+            <button id="refresh">Start now!</button>
+            <div id="data">
+                
+            </div>
+            <div class = "log">
+                <a class = "in" href="/login">Login here</href>
+                <a class = "out" href="/logout">Logout</a>
+            </div>
+        </div>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/customjs/home.js" defer></script>
+    </body>
+</html>
