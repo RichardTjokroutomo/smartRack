@@ -19,16 +19,6 @@ const getWeather = async()=>{
     console.log(parsedData.main.temp);
 }
 
-const calculateDelay = ()=>{
-    const humidity = parsedData.main.humidity;
-    const pressure = parsedData.main.pressure;
-    const temp = parsedData.main.temp;
-
-    let delay = humidity + pressure + temp;  // THIS IS THE FORMULA
-    console.log("DELAY CALCULATED");
-    return delay;
-}
-
 const displayElems = ()=>{
     // creates a div here
     const rootContainerDiv = document.createElement("div");
@@ -89,6 +79,41 @@ const informUser = ()=>{
     logs.appendChild(rootContainerDiv);
 }
 
+const countDelay = (temperature, humidity)=>{
+    let time = 2;
+    let multiplier = 1;
+    let month = new Date();
+    let hour = new Date();
+    let getmonth = month.getMonth();
+    let gethour = hour.getHours();
+    let temp = temperature;
+    let humid = humidity;
+
+    if(gethour >= 17 || gethour <= 6){
+        multiplier += 0.2;
+    }
+
+    if(getmonth == 1 || getmonth >= 11){
+        time = time * 1.5;
+    }
+    else if(getmonth >= 9 && getmonth <= 11){
+        time = time * 1.1;
+    }
+    else{
+    }
+
+    for(i = 294; i >= temp; i--){
+        multiplier += 0.05;
+    }
+    for(j = 75; j <= humid; j++){
+        multiplier += 0.01;
+    }   
+    time = time * (multiplier) * 3600000;
+    console.log(time);
+
+    return time;
+}
+
 //const informServer
 
 const startRoutine = async()=>{
@@ -100,7 +125,8 @@ const startRoutine = async()=>{
         await getWeather();
 
         // calculates the delay we want
-        delay = calculateDelay();
+        //delay = calculateDelay();
+        delay = countDelay(parsedData.main.temperature, parsedData.main.humidity);
 
         // display the data obtained
         displayElems();
