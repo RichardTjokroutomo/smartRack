@@ -108,7 +108,8 @@ const countDelay = (temperature, humidity)=>{
     for(j = 75; j <= humid; j++){
         multiplier += 0.01;
     }   
-    time = time * (multiplier) * 3600000;
+   // time = time * (multiplier) * 3600000;
+    time = Math.round(time * (multiplier) * 15000);
     console.log(time);
 
     return time;
